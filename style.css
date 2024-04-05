@@ -1,0 +1,40 @@
+body{
+    background: #eeeeee;
+    margin :20px;
+}
+
+.colorPicker{
+    background: none;
+    border: none;
+    margin: 0;
+}
+
+.colorPicker.oned{
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0 ,0,0.15);/*это для коробка плейтора*/
+}
+.config{
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.config-title{
+    text-align: center;
+    padding: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.selected-color-text{
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    
+}
