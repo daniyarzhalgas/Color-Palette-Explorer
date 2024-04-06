@@ -7,7 +7,7 @@
         <title>Color Palette Explorer</title>
         <link rel="shortcut icon" type="x-icon" href="imgs/logo.png">
         <link rel="stylesheet" href="colorjoe/colorjoe.css">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
         <script src="colorjoe/colorjoe.min.js"></script>
         <script src="ColorPicker.js"></script>
     
@@ -42,7 +42,8 @@
                             </div>
                             <div class="sliderValueSaturation">100</div>
                         </div>
-                        <button id="shareButton" >Share</button>
+                       
+                        <button id="shareButton" class="shareButton" >Share</button>
                     </div>
                 </div>
             </div>
@@ -63,23 +64,38 @@
 
             sliderSaturation = document.querySelector("input");
 
-            sliderSaturation.oninput = function() {
-                progressBar = document.querySelector("progress");
-                progressBar.value = slider.value;
-              //  console.log( document.querySelector(".selected-color-text").textContent + slider.value); 
-              //      progressBar.style.opacity = slider.value / 100;
-                sliderValue = document.querySelector(".sliderValue");
-                sliderValue.innerHTML = slider.value;
-            }
+            // sliderSaturation.oninput = function() {
+            //     progressBar = document.querySelector("progress");
+            //     progressBar.value = slider.value;
+            //    console.log( document.querySelector(".selected-color-text").textContent + slider.value); 
+            //        progressBar.style.opacity = slider.value / 100;
+            //     sliderValue = document.querySelector(".sliderValue");
+            //     sliderValue.innerHTML = slider.value;
+            // }
 
             shareButton = document.getElementById('shareButton');
                         shareButton.addEventListener('click' , event => {
                         
                         var selectedColor = document.querySelector(".selected-color-text").textContent;
-                        const url = window.location.href + '?color=' + selectedColor.split('#');
-                        console.log(url);
-                        alert(url);
+                        const url = window.location.href.split('?color=')[0] + '?color=' + selectedColor.split('#');
+                                                
                     }); 
+
+            shareButton = document.getElementById('shareButton');
+
+            shareButton.addEventListener('click' , event => {
+                var selectedColor = document.querySelector(".selected-color-text").textContent;
+                const shareUrl = window.location.href.split('?color=')[0] + '?color=' + selectedColor.split('#');
+                            
+                if(navigator.share){
+                    navigator.share({
+                        text: 'Look at what color I made :)',
+                        url: shareUrl
+                    }).then(() => {
+                        console.log('Thanks for sharing!');
+                    }).catch((err) => console.error(err));
+                }else alert("The current browser does not support the share fuction. Please, manually share the link")
+            });
         </script>
         
     </body>
