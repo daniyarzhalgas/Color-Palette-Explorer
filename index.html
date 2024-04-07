@@ -13,76 +13,60 @@
     
     </head>
     <body>
-            <div class="container">
-                <div class="colorjoe"></div>
-                <div class="config">
-                    <div class="config-title">Selected Color</div>
-                    <div class="selected-color-text">#000000</div>
-                    <div class="selected-color" style="opacity: 1;"></div>
-                    <div class="config-title">Shade Colors</div>
-                    <div class="shade-color"></div>
-                    <div class="shade-color"></div>
-                    <div class="shade-color"></div>
-                    <div class="shade-color"></div>
-                    <div class="shade-color"></div>
-                    <div class="containerSliders">
-                        <div class="config-title">Opacity</div>
-                        <div class="slider-cont">
-                            <div class="slider">
-                                <input type="range" min="0" max="100" value="100">
-                                <progress min="0" max="100" value="100"></progress>
-                            </div>
-                            <div class="sliderValue">100</div>
+        
+        <div class="container">
+            
+            <div class="colorjoe"></div>
+            <div class="config">
+                <button id="randomColorButton" class="randomColorButton">Random</button>
+                <div class="config-title">Selected Color</div>
+                <div class="selected-color-text">#000000</div>
+                <div class="selected-color" style="opacity: 1;"></div>
+                <div class="config-title">Shade Colors</div>
+                <div class="shade-color"></div>
+                <div class="shade-color"></div>
+                <div class="shade-color"></div>
+                <div class="shade-color"></div>
+                <div class="shade-color"></div>
+                <div class="containerSliders">
+                    <div class="config-title">Opacity</div>
+                    <div class="slider-cont">
+                        <div class="slider">
+                            <input type="range" min="0" max="100" value="100">
+                            <progress min="0" max="100" value="100"></progress>
                         </div>
-                        <div class="config-title">Saturation</div>
-                        <div class="slider-cont">
-                            <div class="slider">
-                                <input type="range" min="0" max="100" value="100">
-                                <progress min="0" max="100" value="100"></progress>
-                            </div>
-                            <div class="sliderValueSaturation">100</div>
-                        </div>
-                       
-                        <button id="shareButton" class="shareButton" >Share</button>
+                        <div class="sliderValue">100</div>
+                    </div>  
+                    <div class="saved-colors" id="savedColors">
+                        <div class="config-title">Combine Colors</div>
+                        <div class="fisrtColor" id="fisrt-color">First Color</div>
+                        <div class="secondColor" id="second-color">Second Color</div>
                     </div>
+                    <button id="combineButton" class="combineButton" >Combine Colors</button>
+                    
+                    <button id="shareButton" class="shareButton" >Share</button>
+                    
+                    
                 </div>
             </div>
+        </div>
             
         <script>
-           
             const cp = new ColorPicker(document.querySelector(".container"));
             slider = document.querySelector("input");
 
             slider.oninput = function() {
                 progressBar = document.querySelector("progress");
                 progressBar.value = slider.value;
-             //   console.log( document.querySelector(".selected-color-text").textContent + slider.value); 
+                console.log(slider.value);
+                //console.log( document.querySelector(".selected-color-text").textContent + slider.value); 
                 progressBar.style.opacity = slider.value / 100;
                 sliderValue = document.querySelector(".sliderValue");
                 sliderValue.innerHTML = slider.value;
             }
 
-            sliderSaturation = document.querySelector("input");
-
-            // sliderSaturation.oninput = function() {
-            //     progressBar = document.querySelector("progress");
-            //     progressBar.value = slider.value;
-            //    console.log( document.querySelector(".selected-color-text").textContent + slider.value); 
-            //        progressBar.style.opacity = slider.value / 100;
-            //     sliderValue = document.querySelector(".sliderValue");
-            //     sliderValue.innerHTML = slider.value;
-            // }
 
             shareButton = document.getElementById('shareButton');
-                        shareButton.addEventListener('click' , event => {
-                        
-                        var selectedColor = document.querySelector(".selected-color-text").textContent;
-                        const url = window.location.href.split('?color=')[0] + '?color=' + selectedColor.split('#');
-                                                
-                    }); 
-
-            shareButton = document.getElementById('shareButton');
-
             shareButton.addEventListener('click' , event => {
                 var selectedColor = document.querySelector(".selected-color-text").textContent;
                 const shareUrl = window.location.href.split('?color=')[0] + '?color=' + selectedColor.split('#');
@@ -92,7 +76,7 @@
                         text: 'Look at what color I made :)',
                         url: shareUrl
                     }).then(() => {
-                        console.log('Thanks for sharing!');
+                        console.log('Link shared succesful!');
                     }).catch((err) => console.error(err));
                 }else alert("The current browser does not support the share fuction. Please, manually share the link")
             });
