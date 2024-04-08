@@ -5,11 +5,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Color Palette Explorer</title>
+        <title>Color Palette Explorer</title>   
         <link rel="shortcut icon" type="x-icon" href="imgs/logo.png">
-        <link rel="stylesheet" href="colorjoe/colorjoe.css">
+        <link rel="stylesheet" href="picker/color.box.css">
         <link rel="stylesheet" href="style.css">
-        <script src="colorjoe/colorjoe.min.js"></script>
+        <script src="picker/color.box.js"></script>
         <script src="ColorPicker.js"></script>
     
     </head>
@@ -24,20 +24,29 @@
                 <div class="selected-color-text">#000000</div>
                 <div class="selected-color" id="selected-color" style="opacity: 1;"></div>
                 <div class="config-title">Shade Colors</div>
-                <div class="shade-color"></div>
-                <div class="shade-color"></div>
-                <div class="shade-color"></div>
-                <div class="shade-color"></div>
-                <div class="shade-color"></div>
+                <div class="shade-color1" ></div>
+                <div class="shade-color2" ></div>
+                <div class="shade-color3" ></div>
+                <div class="shade-color4" ></div>
+                <div class="shade-color5" ></div>
                 <div class="containerSliders">
                     <div class="config-title">Opacity</div>
                     <div class="slider-cont">
                         <div class="slider">
-                            <input type="range" id="slider" min="0" max="100" value="100">
+                            <input type="range" id="sliderOpacity" min="0" max="100" value="100">
                             <progress id="progress"min="0" max="100" value="100"></progress>
                         </div>
                         <div class="sliderValue" id="sliderValue">100</div>
                     </div>  
+                    <div class="config-title">Saturation</div>
+
+                    <div class="slider-cont">
+                        <div class="slider">
+                            <input type="range" id="sliderSaturation" min="0" max="100" value="100">
+                            <progress id="progressSaturation"min="0" max="100" value="100"></progress>
+                        </div>
+                        <div class="sliderValue" id="sliderValueSaturation">100</div>
+                    </div> 
                     <div class="saved-colors" id="savedColors">
                         <div class="config-title">Combine Colors</div>
                         <div class="fisrtColor" id="fisrt-color">First Color</div>
@@ -46,7 +55,6 @@
                     <button id="combineButton" class="combineButton" >Combine Colors</button>
                     
                     <button id="shareButton" class="shareButton" >Share</button>
-                    
                     
                 </div>
             </div>
@@ -58,7 +66,7 @@
             shareButton = document.getElementById('shareButton');
             shareButton.addEventListener('click' , event => {
                 var selectedColor = document.querySelector(".selected-color-text").textContent;
-                const shareUrl = window.location.href + '?color=' + selectedColor.split('#')[1]+ "&opacity="+ document.querySelector(".sliderValue").textContent;
+                const shareUrl = window.location.href + '?color=' + selectedColor.split('#')[1]+ "&opacity="+ document.getElementById("sliderValue").textContent + "&saturation="+ document.getElementById("sliderValueSaturation").textContent;
                             
                 if(navigator.share){
                     navigator.share({

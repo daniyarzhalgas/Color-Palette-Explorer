@@ -5,7 +5,7 @@ class ColorPicker{
         this.selectedColor = null;
         this.shadeColors = ["#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"];
         this.colorjoe.show();
-        let slider = document.getElementById("slider");
+        let slider = document.getElementById("sliderOpacity");
 
         slider.oninput = () => {
             let progressBar = document.getElementById("progress");
@@ -16,20 +16,37 @@ class ColorPicker{
             let hexToOpacityValue = `0${ Math.round( ( 255 / 100 ) * slider.value ).toString( 16 ) }`.slice( -2 ).toUpperCase();
             let  newColorWithOpacity =  this.selectedColor.substring(0,7) + hexToOpacityValue;
             this.root.querySelector(".selected-color").style.background = newColorWithOpacity;
+            this.root.querySelector(".selected-color-text").textContent = newColorWithOpacity;
 
+        
             //this.setSelectedColor(newColorWithOpacity);
           };
           
+        
+          let sliderSaturation = document.getElementById("sliderSaturation");
+
+          sliderSaturation.oninput = () => {
+
+              let progressBar = document.getElementById("progressSaturation");
+              progressBar.value = sliderSaturation.value;
+              progressBar.style.filter = `saturate(${sliderSaturation.value}%)`;
+              let sliderValue = document.getElementById("sliderValueSaturation");
+              sliderValue.innerHTML = sliderSaturation.value;
+              this.root.querySelector(".selected-color").style.filter =`saturate(${sliderSaturation.value}%)`;
+             
+            };
 
         if(window.location.search !== ""){
             const urlParams = new URLSearchParams(window.location.search);
 
             const colorParam = urlParams.get('color');
             const opacityParam = urlParams.get('opacity');
+            const saturationParam = urlParams.get('saturation');
             const opacity = parseInt(opacityParam);
+            const saturation = parseInt(saturationParam);
 
             this.setSelectedColor("#"+colorParam);
-            let slider = document.getElementById("slider");
+            let slider = document.getElementById("sliderOpacity");
             let sliderValue = document.getElementById("sliderValue");
             let progressBar = document.getElementById("progress");
 
@@ -37,6 +54,14 @@ class ColorPicker{
             progressBar.style.opacity = opacity / 100;
             slider.value = opacity;
             sliderValue.textContent = opacity;
+
+            let sliderSaturation = document.getElementById("sliderSaturation");
+            let sliderValueSaturation = document.getElementById("sliderValueSaturation");
+            let progressBarSaturation = document.getElementById("progressSaturation");
+
+            progressBarSaturation.value = saturation;
+            sliderSaturation.value = saturation;
+            sliderValueSaturation.textContent = saturation;
             
             let hexToOpacityValue = `0${ Math.round( ( 255 / 100 ) * slider.value ).toString( 16 ) }`.slice( -2 ).toUpperCase();
             let  newColorWithOpacity =  this.selectedColor.substring(0,7) + hexToOpacityValue;
@@ -45,17 +70,26 @@ class ColorPicker{
             
 
         }else{
-            this.setSelectedColor("#43ff64");
+            this.setSelectedColor("#004d0e");
+            console.log(this.color);
         }
         this.colorjoe.on("change", color => {
-            const encodedColor = encodeURIComponent(color);
-           //color._saturation =Number(this.root.querySelector(".sliderValue").textContent)/100;;
-            this.setSelectedColor(color.hex()  , true);
-  
-        });
-
-        
+            console.log("change");
+            console.log(color);
             
+            let slider = document.getElementById("sliderOpacity");
+            let sliderValue = document.getElementById("sliderValue");
+            let progressBar = document.getElementById("progress");
+
+            progressBar.value = 100;
+            progressBar.style.opacity = 100;
+            slider.value = 100;
+            sliderValue.textContent = 100;
+           
+            this.setSelectedColor(color.hex()  , true);
+            this.changeShadeColors();
+        });
+                    
         this.root.querySelectorAll(".shade-color").forEach((el, i) => {
             this.showShadeColor(el, this.shadeColors[i]);
             
@@ -86,7 +120,7 @@ class ColorPicker{
             console.log("combine button clicked");
 
             let firstColorRgbValues = window.getComputedStyle(this.root.querySelector(".fisrtColor")).backgroundColor.match(/\d+/g);
-            let secondColorRgbValues =window.getComputedStyle(this.root.querySelector(".secondColor")).backgroundColor.match(/\d+/g);
+            let secondColorRgbValues = window.getComputedStyle(this.root.querySelector(".secondColor")).backgroundColor.match(/\d+/g);
 
             console.log(firstColorRgbValues);
             console.log(secondColorRgbValues);
@@ -96,9 +130,6 @@ class ColorPicker{
                 Math.round((Number(firstColorRgbValues[2]) + Number(secondColorRgbValues[2])) / 2)    // Average of blue values
               ];
               console.log(mixedColor);
-              let rgbColor = `rgb(${mixedColor[0]}, ${mixedColor[1]}, ${mixedColor[3]})`;
-             // this.setSelectedColor(rgbColor);
-
               let redHex = mixedColor[0].toString(16).padStart(2, "0");     // Convert red to hex
               let greenHex = mixedColor[1].toString(16).padStart(2, "0"); // Convert green to hex
               let blueHex = mixedColor[2].toString(16).padStart(2, "0");   // Convert blue to hex
@@ -122,6 +153,15 @@ class ColorPicker{
        
     }
 
+
+    changeShadeColors(){
+        console.log(this.selectedColor);
+        this.root.querySelector(".shade-color1").style.background = this.selectedColor;
+        this.root.querySelector(".shade-color2").style.background = this.selectedColor;
+        this.root.querySelector(".shade-color3").style.background = this.selectedColor;
+        this.root.querySelector(".shade-color4").style.background = this.selectedColor;
+        this.root.querySelector(".shade-color5").style.background = this.selectedColor;
+    }
     getNewColor(){
         var symbols, hexColor;
         symbols = "0123456789ABCDEF";

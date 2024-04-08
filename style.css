@@ -40,7 +40,7 @@ body{
     font-size: 1.2em;
     margin-bottom: 15px;
 }
-.selected-color,.shade-color{
+.selected-color,.shade-color1 , .shade-color2, .shade-color3,.shade-color4,.shade-color5{
     opacity: 1;
     height: 35px;
     border: 1px solid #b64646;
@@ -48,14 +48,14 @@ body{
     border-radius: 3px;
     cursor: pointer;
 }
-.shade-color{
+.shade-color1, .shade-color2, .shade-color3,.shade-color4,.shade-color5{
     height: 15px;
     border: 1px solid #b64646;
     border-radius: 3px;
     border-radius: 3px;
     cursor: pointer;
 }
-.shade-color:not(:last-of-type){
+.shade-color1:not(:last-of-type) , .shade-color2:not(:last-of-type) ,.shade-color3:not(:last-of-type) ,.shade-color4:not(:last-of-type),.shade-color5:not(:last-of-type) {
     margin-bottom: 5px;
 }
 .slider-cont{
