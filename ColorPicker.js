@@ -5,30 +5,72 @@ class ColorPicker{
         this.selectedColor = null;
         this.shadeColors = ["#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"];
         this.colorjoe.show();
-        this.bool =false;
+        let slider = document.getElementById("slider");
+
+        slider.oninput = () => {
+            let progressBar = document.getElementById("progress");
+            progressBar.value = slider.value;
+            progressBar.style.opacity = slider.value / 100;
+            let sliderValue = this.root.querySelector('.sliderValue');
+            sliderValue.innerHTML = slider.value;
+            let hexToOpacityValue = `0${ Math.round( ( 255 / 100 ) * slider.value ).toString( 16 ) }`.slice( -2 ).toUpperCase();
+            let  newColorWithOpacity =  this.selectedColor.substring(0,7) + hexToOpacityValue;
+            this.root.querySelector(".selected-color").style.background = newColorWithOpacity;
+
+            //this.setSelectedColor(newColorWithOpacity);
+          };
+          
 
         if(window.location.search !== ""){
-            this.setSelectedColor("#"+window.location.search.split(',')[1]);
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const colorParam = urlParams.get('color');
+            const opacityParam = urlParams.get('opacity');
+            const opacity = parseInt(opacityParam);
+
+            this.setSelectedColor("#"+colorParam);
+            let slider = document.getElementById("slider");
+            let sliderValue = document.getElementById("sliderValue");
+            let progressBar = document.getElementById("progress");
+
+            progressBar.value = opacity;
+            progressBar.style.opacity = opacity / 100;
+            slider.value = opacity;
+            sliderValue.textContent = opacity;
+            
+            let hexToOpacityValue = `0${ Math.round( ( 255 / 100 ) * slider.value ).toString( 16 ) }`.slice( -2 ).toUpperCase();
+            let  newColorWithOpacity =  this.selectedColor.substring(0,7) + hexToOpacityValue;
+            this.root.querySelector(".selected-color").style.background = newColorWithOpacity;
+            
+            
+
         }else{
-            this.setSelectedColor("#7875c5");
+            this.setSelectedColor("#43ff64");
         }
         this.colorjoe.on("change", color => {
-        //console.log(color);
             const encodedColor = encodeURIComponent(color);
-            color._saturation =Number(this.root.querySelector(".sliderValue").textContent)/100;
+           //color._saturation =Number(this.root.querySelector(".sliderValue").textContent)/100;;
             this.setSelectedColor(color.hex()  , true);
   
-            this.shadeColors = ["#ffff00","#ffff00","#ffff00","#ffff00","#ffff00"];
         });
+
+        
             
         this.root.querySelectorAll(".shade-color").forEach((el, i) => {
             this.showShadeColor(el, this.shadeColors[i]);
             
             el.addEventListener("click" , e => {
-                if(e.button == 1){
-                    this.saveColor(this.selectedColor,i);
+
+                console.log("shaded section clicked");
+                this.shadeColors = ["#ff0000","#ff0000","#ff0000","#ff0000","#ff0000"];
+
+                console.log(this.shadeColors);
+                console.log(e.button);
+               if(e.button == 1){
+                     this.saveColor(this.selectedColor,i);
                     this.showShadeColor(el,this.selectedColor);
-                }
+               }
+
                 this.setSelectedColor(el.dataset.color);
             });
         });
@@ -66,7 +108,7 @@ class ColorPicker{
 
             console.log(hexColor);
             this.setSelectedColor(hexColor);
-            
+
         });
         this.root.querySelector(".fisrtColor").addEventListener('click' , event => {
             console.log("first color clikced");
@@ -103,7 +145,7 @@ class ColorPicker{
         }
     }
     getShadeColors(){
-        return ShadeColors;
+        return shadeColors;
     }
 
     showShadeColor(element, color){

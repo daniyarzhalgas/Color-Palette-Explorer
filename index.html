@@ -1,3 +1,4 @@
+<!-- Created by Zhalgas Daniyar https://github.com/daniyarzhalgas/Color-Palette-Explorer-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +22,7 @@
                 <button id="randomColorButton" class="randomColorButton">Random</button>
                 <div class="config-title">Selected Color</div>
                 <div class="selected-color-text">#000000</div>
-                <div class="selected-color" style="opacity: 1;"></div>
+                <div class="selected-color" id="selected-color" style="opacity: 1;"></div>
                 <div class="config-title">Shade Colors</div>
                 <div class="shade-color"></div>
                 <div class="shade-color"></div>
@@ -32,10 +33,10 @@
                     <div class="config-title">Opacity</div>
                     <div class="slider-cont">
                         <div class="slider">
-                            <input type="range" min="0" max="100" value="100">
-                            <progress min="0" max="100" value="100"></progress>
+                            <input type="range" id="slider" min="0" max="100" value="100">
+                            <progress id="progress"min="0" max="100" value="100"></progress>
                         </div>
-                        <div class="sliderValue">100</div>
+                        <div class="sliderValue" id="sliderValue">100</div>
                     </div>  
                     <div class="saved-colors" id="savedColors">
                         <div class="config-title">Combine Colors</div>
@@ -53,23 +54,11 @@
             
         <script>
             const cp = new ColorPicker(document.querySelector(".container"));
-            slider = document.querySelector("input");
-
-            slider.oninput = function() {
-                progressBar = document.querySelector("progress");
-                progressBar.value = slider.value;
-                console.log(slider.value);
-                //console.log( document.querySelector(".selected-color-text").textContent + slider.value); 
-                progressBar.style.opacity = slider.value / 100;
-                sliderValue = document.querySelector(".sliderValue");
-                sliderValue.innerHTML = slider.value;
-            }
-
-
+            
             shareButton = document.getElementById('shareButton');
             shareButton.addEventListener('click' , event => {
                 var selectedColor = document.querySelector(".selected-color-text").textContent;
-                const shareUrl = window.location.href.split('?color=')[0] + '?color=' + selectedColor.split('#');
+                const shareUrl = window.location.href + '?color=' + selectedColor.split('#')[1]+ "&opacity="+ document.querySelector(".sliderValue").textContent;
                             
                 if(navigator.share){
                     navigator.share({
