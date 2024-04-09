@@ -46,6 +46,7 @@ class ColorPicker{
           new shchange(this.selectedColor ,document).changeShadeColors();
         }else{
           this.setSelectedColor("#004d0e");
+          new shchange(this.selectedColor ,document).changeShadeColors();
         }
 
         this.colorjoe.on("change", color => {
