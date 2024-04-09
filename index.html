@@ -1,4 +1,6 @@
-<!-- Created by Zhalgas Daniyar https://github.com/daniyarzhalgas/Color-Palette-Explorer-->
+<!-- Created by Daniyar Zhalgas
+    <daniyarzhalgas05@gmail.com> - SDU
+     https://github.com/daniyarzhalgas/Color-Palette-Explorer -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,15 +13,20 @@
         <link rel="stylesheet" href="style.css">
         <script src="picker/color.box.js"></script>
         <script src="ColorPicker.js"></script>
-    
+        <script src="shchange.js"></script>
+        <script src="mixColors.js"></script>
+
+        <script src="UrlSearchParams.js"></script>
+
     </head>
     <body>
-        
+        <div  class="config-heading-title">Color Picker Explorer</div>
         <div class="container">
             
             <div class="colorjoe"></div>
             <div class="config">
-                <button id="randomColorButton" class="randomColorButton">Random</button>
+                <button class="button-4" id="randomColorButton"role="button">Random Color</button>
+
                 <div class="config-title">Selected Color</div>
                 <div class="selected-color-text">#000000</div>
                 <div class="selected-color" id="selected-color" style="opacity: 1;"></div>
@@ -52,10 +59,11 @@
                         <div class="fisrtColor" id="fisrt-color">First Color</div>
                         <div class="secondColor" id="second-color">Second Color</div>
                     </div>
-                    <button id="combineButton" class="combineButton" >Combine Colors</button>
                     
-                    <button id="shareButton" class="shareButton" >Share</button>
-                    
+                    <button class="button-4" id="combineButton"role="button">Mix Colors</button>
+
+                    <button class="button-4" id="shareButton"role="button">Share</button>
+
                 </div>
             </div>
         </div>
