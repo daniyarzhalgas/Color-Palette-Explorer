@@ -43,6 +43,30 @@ class shchange{
       let blueDecreased = `#${this.componentToHex(r)}${this.componentToHex(g)}${this.componentToHex(b - 50)}`;
       if(!blueDecreased.includes('-'))
       similarColors.push(blueDecreased);
+
+      let redIncreased2 = `#${this.componentToHex(r + 30)}${this.componentToHex(g)}${this.componentToHex(b)}`;
+      if(!redIncreased2.includes('-'))
+      similarColors.push(redIncreased);
+    
+      let redDecreased2 = `#${this.componentToHex(r - 30)}${this.componentToHex(g)}${this.componentToHex(b)}`;
+      if(!redDecreased2.includes('-'))
+      similarColors.push(redDecreased);
+    
+      let greenIncreased2 = `#${this.componentToHex(r)}${this.componentToHex(g + 30)}${this.componentToHex(b)}`;
+      if(!greenIncreased2.includes('-'))
+      similarColors.push(greenIncreased2);
+    
+      let greenDecreased2 = `#${this.componentToHex(r)}${this.componentToHex(g - 30)}${this.componentToHex(b)}`;
+      if(!greenDecreased2.includes('-'))
+      similarColors.push(greenDecreased2);
+    
+      let blueIncreased2 = `#${this.componentToHex(r)}${this.componentToHex(g)}${this.componentToHex(b + 30)}`;
+      if(!blueIncreased2.includes('-'))
+      similarColors.push(blueIncreased2);
+    
+      let blueDecreased2 = `#${this.componentToHex(r)}${this.componentToHex(g)}${this.componentToHex(b - 30)}`;
+      if(!blueDecreased2.includes('-'))
+      similarColors.push(blueDecreased2);
     
       return similarColors;
     }
