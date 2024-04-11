@@ -2,13 +2,15 @@ body{
     background: #ffffff;
     margin :20px;
 }
-
 .inPutColor {
     border-radius: 0.2rem;
     border: none;
     height: 4%;
-  }
-
+    
+}
+.inPutColor::placeholder{
+    font-size: 14px;
+}
 .colorPicker{
     opacity: 1;
     background: none;
@@ -31,8 +33,6 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(0, 0 ,0,0.15);
 }
-
-
 .config{
     flex-grow: 1;
     margin-left: 20px;
@@ -42,6 +42,7 @@ body{
     padding: 15px;
     font-family: sans-serif;
     font-weight: bold;
+    font-size: larger;
 }
 .config-heading-title{
     text-align: center;
@@ -54,7 +55,7 @@ body{
 .selected-color-text{
     text-align: center;
     font-family: monospace;
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 15px;
 }
 .selected-color,.shade-color1 , .shade-color2, .shade-color3,.shade-color4,.shade-color5{
@@ -131,7 +132,6 @@ body{
     margin-left: 10px;
     text-align: center;
 }
-
 .firstColor , .secondColor{
     text-align: center;
     opacity: 1;
@@ -142,8 +142,6 @@ body{
     cursor: pointer;
     background-color: rgb(255, 255, 255);
 }
-
-
 .button-4 {
     appearance: none;
     background-color: #FAFBFC;
@@ -170,36 +168,28 @@ body{
     
     word-wrap: break-word;
   }
-  
-  .button-4:hover {
+.button-4:hover {
     background-color: #F3F4F6;
     text-decoration: none;
     transition-duration: 0.1s;
   }
-  
-  .button-4:disabled {
+.button-4:disabled {
     background-color: #FAFBFC;
     border-color: rgba(27, 31, 35, 0.15);
     color: #959DA5;
     cursor: default;
-  }
-  
-  .button-4:active {
+}
+.button-4:active {
     background-color: #EDEFF2;
     box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
     transition: none 0s;
-  }
-  
-  .button-4:focus {
+}
+.button-4:focus {
     outline: 1px transparent;
-  }
-  
-  .button-4:before {
+}
+.button-4:before {
     display: none;
-  }
-  
-  .button-4:-webkit-details-marker {
+}
+.button-4:-webkit-details-marker {
     display: none;
-  }
-
- 
+}
