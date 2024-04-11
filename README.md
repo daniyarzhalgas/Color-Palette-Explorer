@@ -10,7 +10,7 @@
   
 - **Random Color:** Generate random colors for quick inspiration and exploration.The Random Color method generates a random color in HEX format by using characters from the string  `symbols = "0123456789ABCDEF";`.She selects random characters from this string to form a six-digit color value.
   
-- **Combine Colors (2 colors):** Mix and combine two selected colors to see the resulting blend.The combine Color method received two RGB-formatted colors and returns the average color calculated by averaging the values of each channel (red, green, and blue).
+- **Combine Colors (2 colors):** Click the "first color" and "second color" boxes to choose your two colors for the first time. The combine Color method received two RGB-formatted colors and returns the average color calculated by averaging the values of each channel (red, green, and blue).
   
 - **Color Customization:** The application provides the ability to adjust the hue, saturation, and brightness of each color to create unique color combinations.
   
