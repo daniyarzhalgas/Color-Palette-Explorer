@@ -35,7 +35,13 @@ class ColorPicker{
       url.recyclingUrl();
       this.setSelectedColor("#"+url.colorParam);
       }else{
-        this.setSelectedColor("#2b4363");
+        try {
+          const savedColor = JSON.parse(localStorage.getItem("colorpicker-saved"));
+          this.setSelectedColor(savedColor);
+        } catch (error) {
+          this.setSelectedColor("#2b4363");
+        }
+        
       }
 
     this.colorjoe.on("change", color => {
@@ -142,5 +148,6 @@ class ColorPicker{
     }
     new shchange(this.selectedColor ,document).changeShadeColors();
     document.body.style.backgroundColor = this.selectedColor;
+    localStorage.setItem("colorpicker-saved", JSON.stringify(this.selectedColor));
   }
 }
