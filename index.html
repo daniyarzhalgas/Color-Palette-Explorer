@@ -16,16 +16,16 @@
         <script src="js/shchange.js"></script>
         <script src="js/mixColors.js"></script>
         <script src="js/UrlSearchParams.js"></script>
-
-    </head>
+   </head>
     <body>
-        <div  class="config-heading-title">Color Picker Explorer</div>
-        <div class="container">
-            
+        
+
+        <div class="container">    
             <div class="colorjoe"></div>
             <div class="config">
-                <button class="button-4" id="randomColorButton"role="button">Random Color</button>
 
+                <input type="text" id="inputColor" placeholder="Enter a color"/>
+                <button class="button-4" id="randomColorButton"role="button">Random Color</button>
                 <div class="config-title">Selected Color</div>
                 <div class="selected-color-text">#000000</div>
                 <div class="selected-color" id="selected-color" style="opacity: 1;"></div>
@@ -45,7 +45,6 @@
                         <div class="sliderValue" id="sliderValue">100</div>
                     </div>  
                     <div class="config-title">Saturation</div>
-
                     <div class="slider-cont">
                         <div class="slider">
                             <input type="range" id="sliderSaturation" min="0" max="100" value="100">
@@ -55,18 +54,14 @@
                     </div> 
                     <div class="saved-colors" id="savedColors">
                         <div class="config-title">Combine Colors</div>
-                        <div class="fisrtColor" id="fisrt-color">First Color</div>
-                        <div class="secondColor" id="second-color">Second Color</div>
+                        <div class="firstColor" id="fisrt-color"><p>First Color</p></div>
+                        <div class="secondColor" id="second-color"><p>Second Color</p></div>
                     </div>
-                    
                     <button class="button-4" id="combineButton"role="button">Mix Colors</button>
-
                     <button class="button-4" id="shareButton"role="button">Share</button>
-
                 </div>
             </div>
         </div>
-            
         <script>
             const cp = new ColorPicker(document.querySelector(".container"));
             
@@ -74,13 +69,12 @@
             shareButton.addEventListener('click' , event => {
                 var selectedColor = document.querySelector(".selected-color-text").textContent;
                 const shareUrl = window.location.href + '?color=' + selectedColor.split('#')[1]+ "&opacity="+ document.getElementById("sliderValue").textContent + "&saturation="+ document.getElementById("sliderValueSaturation").textContent;
-                            
                 if(navigator.share){
                     navigator.share({
                         text: 'Look at what color I made :)',
                         url: shareUrl
                     }).then(() => {
-                        console.log('Link shared succesful!');
+                        console.log('link has been successfull created');
                     }).catch((err) => console.error(err));
                 }else alert("The current browser does not support the share fuction. Please, manually share the link")
             });

@@ -1,7 +1,8 @@
 body{
-    background: #eeeeee;
+    background: #ffffff;
     margin :20px;
 }
+
 .colorPicker{
     opacity: 1;
     background: none;
@@ -24,6 +25,14 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(0, 0 ,0,0.15);/*это для коробка плейтора*/
 }
+
+.fixed-text {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 1000; 
+}
 .config{
     flex-grow: 1;
     margin-left: 20px;
@@ -40,6 +49,7 @@ body{
     font-size: xx-large;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+
 }
 .selected-color-text{
     text-align: center;
@@ -71,6 +81,7 @@ body{
     border-radius: 5px 30px 30px 5px ;
     display: flex;
     align-items: center;
+    width: 250px;
 }
 .slider{
     position: relative;
@@ -121,14 +132,17 @@ body{
     text-align: center;
 }
 
-.fisrtColor , .secondColor{
+.firstColor , .secondColor{
+    text-align: center;
     opacity: 1;
     height: 35px;
     border: 1px solid #b64646;
     border-radius: 3px;
     border-radius: 3px;
     cursor: pointer;
+    background-color: rgb(255, 255, 255);
 }
+
 
 .button-4 {
     appearance: none;
@@ -153,6 +167,7 @@ body{
     touch-action: manipulation;
     vertical-align: middle;
     white-space: nowrap;
+    
     word-wrap: break-word;
   }
   
@@ -186,3 +201,5 @@ body{
   .button-4:-webkit-details-marker {
     display: none;
   }
+
+ 

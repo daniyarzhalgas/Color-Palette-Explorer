@@ -6,14 +6,12 @@ class URLSearchParams{
     }
   
     recyclingUrl(){
-        const urlParams = new URLSearchParams(window.location.search);
-        console.log(urlParams);
-        this.colorParam = "004d0eA8";
-        const opacityParam = "66";
-        const saturationParam = "47"
-        const opacity = parseInt(opacityParam);
-        const saturation = parseInt(saturationParam);
+        let urlParams = this.getUrlParams(window.location.search);
 
+        this.colorParam = urlParams["color"];
+        let opacity = urlParams["opacity"];
+        let saturation = urlParams["saturation"];
+    
         let slider = document.getElementById("sliderOpacity");
         let sliderValue = document.getElementById("sliderValue");
         let progressBar = document.getElementById("progress");
@@ -36,4 +34,23 @@ class URLSearchParams{
         let  newColorWithOpacity =  this.colorParam.substring(0,7) + hexToOpacityValue;
         this.root.querySelector(".selected-color").style.background = newColorWithOpacity;
     }
+    getUrlParams(url) {
+        let params = {};
+        let urlParts = url.split("?");
+      
+        if (urlParts.length >= 2) {
+          let paramString = urlParts[1];
+          let paramPairs = paramString.split("&");
+      
+          for (let pair of paramPairs) {
+            let keyValue = pair.split("=");
+            let key = decodeURIComponent(keyValue[0]);
+            let value = decodeURIComponent(keyValue[1]);
+            params[key] = value;
+          }
+        }
+      
+        return params;
+      }
+      
 }
