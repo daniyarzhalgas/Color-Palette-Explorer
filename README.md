@@ -14,9 +14,9 @@
   
 - **Color Customization:** The application provides the ability to adjust the hue, saturation, and brightness of each color to create unique color combinations.
   
-- **Creating Color Schemes:** Users can create complementary or analogous color schemes based on selected base colors.The color scheme function raises and reduces the values of each channel (red, green, and blue) by 20 relative to the specified base color, resulting in comparable hues in the palette. This approach allows you to create color schemes that are harmonious with the chosen color.
+- **Creating Color Schemes:** Users can create complementary or analogous color schemes based on selected base colors.The color scheme function raises and reduces the values of each channel (red, green, and blue) by 50 relative to the specified base color, resulting in comparable hues in the palette. This approach allows you to create color schemes that are harmonious with the chosen color.
   
-- **Saving and Sharing Palettes:** Save your created color palettes and share them with others to inspire or get feedback.Palette data is saved in the browser's local storage for sharing and saving purposes. Window.location.href is then used to create a unique URL including data about color.You can send a link to a friend via Messenger or copy this URL and share it.
+- **Saving and Sharing Palettes:** Save your created color palettes and share them with others to inspire or get feedback.Palette data is saved in the browser's local storage for sharing and saving purposes. `Window.location.href` is then used to create a unique URL including data about color.You can send a link to a friend via Messenger or copy this URL and share it.
 ## Known issues
 In older browsers, the color picker may not display correctly and web applications may not work correctly on the phone device. I am working on fixing this problem.
 
