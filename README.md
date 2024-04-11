@@ -2,7 +2,7 @@
 
 [Color Palette Explorer](https://color-palette-explorer.vercel.app/) is a web application that allows users to explore, create, and share color palettes. Whether you're a designer looking for inspiration or someone who loves playing with colors, this tool is for you!
 
-## Features
+## Key features 
 
 - **Color Selection:** Users can choose colors from a wide spectrum using an intuitive color picker or predefined color palettes.
   
@@ -20,7 +20,8 @@
 ## Known issues
 In older browsers, the color picker may not display correctly and web applications may not work correctly on the phone device. I am working on fixing this problem.
 
+## How to Run
+To run the web application, simply open the `index.html` file in a web browser.
 
-
-## Contact
-For questions or suggestions, feel free to reach out to daniyarzhalgas05@gmail.com.
+## Credits
+This project was created by Daniyar Zhalgas.
