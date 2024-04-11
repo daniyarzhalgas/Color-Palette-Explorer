@@ -1,6 +1,6 @@
 # Color Palette Explorer
 
-Color Palette Explorer is a web application that allows users to explore, create, and share color palettes. Whether you're a designer looking for inspiration or someone who loves playing with colors, this tool is for you!
+[Color Palette Explorer](https://color-palette-explorer.vercel.app/) is a web application that allows users to explore, create, and share color palettes. Whether you're a designer looking for inspiration or someone who loves playing with colors, this tool is for you!
 
 ## Features
 
